@@ -12,21 +12,47 @@
 #|______________________________________________________________|#
 ##################################################################
 
-import calculatorArithmetic
+from calculatorArithmetic import *
 from tkinter import *
 
-firstVal = 0
-secondVal = 0
-
 #Methods for calculator functionality
+operation_stack = []
 
 def clickedButton(value):
-    currentVal = titleLabel.get()
-    titleLabel.delete(0, END)
-    titleLabel.insert(0, str(currentVal) + str(value))
+    currentVal = outputLabel.get()
+    outputLabel.delete(0, END)
+    outputLabel.insert(0, str(currentVal) + str(value))
 
 def clearAll():
+    outputLabel.delete(0, END)
     titleLabel.delete(0, END)
+
+    while(len(operation_stack) != 0):
+        operation_stack.pop()
+
+def additionButton():
+    firstVal = outputLabel.get()
+    operation_stack.append(int(firstVal))
+    outputLabel.delete(0, END)
+    titleLabel.insert(0, str(firstVal) + " + ")
+    operation_stack.append("+")
+
+def equals():
+    operation = titleLabel.get()
+    secondVal = outputLabel.get()
+    operation_stack.append(int(secondVal))
+    outputLabel.delete(0, END)
+    titleLabel.delete(0, END)
+    titleLabel.insert(0, str(operation) + str(secondVal))
+
+    secondVal = operation_stack.pop()
+    operation = operation_stack.pop()
+    firstVal = operation_stack.pop()
+
+    if operation == "+":
+        result = addition(firstVal, secondVal)
+
+    outputLabel.insert(0, "= " + str(result))
 
 #GUI for calculator
 
@@ -119,23 +145,23 @@ threeButton = Button(root, text="3", padx=40, pady=20, command=lambda: clickedBu
 threeButton.grid(row=6, column=2)
 
 #addition function
-additionButton = Button(root, text="-", padx=40, pady=20)
+additionButton = Button(root, text="+", padx=40, pady=20, command=additionButton)
 additionButton.grid(row=6, column=3)
 
 #type Button
 typeButton = Button(root, text="+/-", padx=34, pady=20)
-typeButton.grid(row=6, column=0)
+typeButton.grid(row=7, column=0)
 
 #0 Button
 zeroButton = Button(root, text="0", padx=40, pady=20, command=lambda: clickedButton(0))
-zeroButton.grid(row=6, column=1)
+zeroButton.grid(row=7, column=1)
 
 #decimal Button
 decimalButton = Button(root, text=".", padx=41, pady=20)
-decimalButton.grid(row=6, column=2)
+decimalButton.grid(row=7, column=2)
 
 #equal function
-equalButton = Button(root, text="-", padx=40, pady=20)
-equalButton.grid(row=6, column=3)
+equalButton = Button(root, text="=", padx=40, pady=20, command=equals)
+equalButton.grid(row=7, column=3)
 
 root.mainloop()
