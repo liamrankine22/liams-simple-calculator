@@ -31,7 +31,7 @@ def clearAll():
         operation_stack.pop()
 
 def clearEntry():
-    print("simga")
+    outputLabel.delete(0,END)
 
 def typeFunction():
     currentVal = outputLabel.get()
@@ -162,7 +162,7 @@ percentageButton = Button(root, text="%", padx=38, pady=20, command=percentageFu
 percentageButton.grid(row=2, column=0)
 
 #Clear entry function
-clearEntryButton = Button(root, text="CE", padx=35, pady=20)
+clearEntryButton = Button(root, text="CE", padx=35, pady=20, command=clearEntry)
 clearEntryButton.grid(row=2, column=1)
 
 #Clear all function
