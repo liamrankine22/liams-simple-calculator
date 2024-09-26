@@ -174,11 +174,11 @@ powerOfMultButton = Button(root, text="x^y", padx=32, pady=20, command=powerOfTw
 powerOfMultButton.grid(row=2, column=3)
 
 #fraction Function
-fractionButton = Button(root, text="1/x", padx=35, pady=20, command=fractionFunction)
+fractionButton = Button(root, text="1/x", padx=34, pady=20, command=fractionFunction)
 fractionButton.grid(row=3, column=0)
 
 #Squared function
-squaredButton = Button(root, text="x^2", padx=33, pady=20, command=squaredFunction)
+squaredButton = Button(root, text="x^2", padx=32, pady=20, command=squaredFunction)
 squaredButton.grid(row=3, column=1)
 
 #square root function
@@ -234,7 +234,7 @@ threeButton = Button(root, text="3", padx=40, pady=20, command=lambda: clickedBu
 threeButton.grid(row=6, column=2)
 
 #addition function
-additionButton = Button(root, text="+", padx=40, pady=20, command=additionFunction)
+additionButton = Button(root, text="+", padx=39, pady=20, command=additionFunction)
 additionButton.grid(row=6, column=3)
 
 #type Button
@@ -246,11 +246,37 @@ zeroButton = Button(root, text="0", padx=40, pady=20, command=lambda: clickedBut
 zeroButton.grid(row=7, column=1)
 
 #decimal Button
-decimalButton = Button(root, text=".", padx=41, pady=20, command=decimalFunction)
+decimalButton = Button(root, text=".", padx=42, pady=20, command=decimalFunction)
 decimalButton.grid(row=7, column=2)
 
 #equal function
-equalButton = Button(root, text="=", padx=40, pady=20, command=equals)
+equalButton = Button(root, text="=", padx=39, pady=20, command=equals)
 equalButton.grid(row=7, column=3)
+
+#History Buttons
+x = "0 + 0 = 0"
+history_entry_one = Label(root, text="HISTORY", padx=40, pady=20)
+history_entry_one.grid(row= 0, column= 4)
+history_entry_two = Button(root, text="TEMP", padx=40, pady=20)
+history_entry_two.grid(row= 1, column= 4)
+history_entry_three = Button(root, text="TEMP", padx=40, pady=20)
+history_entry_three.grid(row= 2, column= 4)
+history_entry_four = Button(root, text="TEMP", padx=40, pady=20)
+history_entry_four.grid(row= 3, column= 4)
+history_entry_five = Button(root, text="TEMP", padx=40, pady=20)
+history_entry_five.grid(row= 4, column= 4)
+history_entry_six = Button(root, text="TEMP", padx=40, pady=20)
+history_entry_six.grid(row= 5, column= 4)
+history_entry_seven = Button(root, text="TEMP", padx=40, pady=20)
+history_entry_seven.grid(row= 6, column= 4)
+history_entry_eight = Button(root, text="TEMP", padx=40, pady=20)
+history_entry_eight.grid(row= 7, column= 4)
+
+title_terminal = Label(root, text="Terminal")
+title_terminal.grid(row=8, columnspan=5)
+
+terminal = Entry(root, width=70, borderwidth=5)
+terminal.grid(row=9, columnspan=5)
+
 
 root.mainloop()
